@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> </title>
+    <style>
+        *{font-size: 26pt; font-weight: bold;}
+        a{font-size: 26pt; font-weight: bold; color:blue;}
+        a:hover{font-size: 30pt; font-weight: bold; color:green;}
+
+        .green{
+            color:green; font-size: 36pt;
+        }
+        .red{
+            color:red; font-size: 36pt;
+        }
+    </style>
+
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <link rel="stylesheet" href="/resources/demos/style.css">
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+ $(function(){
+   	$("#btn1").click(function (){
+       $('p').addClass("green");
+       $('p').removeClass("red");
+       $('#btn1').css("background","green");
+       $('#btn2').css("background","");
+	});
+
+    $("#btn2").click(function (){
+	  	$('p').addClass("red");
+	   	$('p').removeClass("green");
+	   	$('#btn2').css("background","red");
+	   	$('#btn1').css("background","");
+   });
+
+ });
+</script>
+ </head>
+    <body>
+    <p>green,blue</p>
+    <button id="btn1">초록색</button>
+    <button id="btn2">빨간색</button>
+  </body>
+</html>
+
+

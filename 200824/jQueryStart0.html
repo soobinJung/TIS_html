@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+    <html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <title></title>
+    <style>
+        *{font-size: 26pt; font-weight: bold;}
+        a{font-size: 26pt; font-weight: bold; color:blue;}
+        a:hover{font-size: 30pt; font-weight: bold; color:green;}
+    </style>
+
+     <link rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+     <link rel='stylesheet' href='/resources/demos/style.css'>
+     <script src='https://code.jquery.com/jquery-1.12.4.js'></script>
+     <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+
+<script>
+  $(function(){
+	    $('#a').click( function(event){
+	 	     $(this).text('asp area jQuery  오전10:10');
+	 	     $(this).css({'font-size':'34px', 'font-weight':'bold'});
+	 	     $(this).css('background','pink');
+         $(this).css('color','white');
+	 	     $(this).css('height','120px');
+	 	     $(this).css('border','3px solid  red');
+		});	  
+  });  
+  
+  jQuery( function( ) {       
+    $('#b').click(function(argument){
+    	 $('#b').text('php area jQuery  오전10:15');	
+         $(this).css({
+         'color' : 'white' ,
+         'background-Color' : 'purple',
+         'font-size' : '34px' ,
+         'height' : '120px' ,
+         'border' : '3px solid  green'
+        });
+    });
+  });
+
+
+  jQuery(document).ready(function(){
+     $('#c').on('click', function( ){
+        $(this).text('jsp area jQuery  오전10:42');
+        $(this).css({
+            color : 'red' ,
+            //background-color : 'yellow',    //케밥표기법으로 문법에러이면서 실행에러
+            backgroundColor : 'lightgreen',  
+            fontSize : '34px' ,
+            height : '120px' ,
+            border : '3px solid  blue'
+         });
+      });
+  });
+</script>
+</head>
+<body>
+	  <div id='a'>div태그 asp</div> <br>
+  	<div id='b'>div태그 php</div> <br>
+    <div id='c'>div태그 jsp</div> <br>
+<p></p>
+
+</body>
+</html>

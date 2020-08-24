@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+  *{font-size: 20pt;}
+</style>
+
+<!-- CDN jquery------------------------------------------------- -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+$(function(){ 
+    var srcVal = $('#sec_1 img').attr('src');
+    console.log('그림경로 =' + srcVal);
+
+    $('#sec_1 img')
+    .attr({
+        width:70 ,
+        height:70 ,
+        src:srcVal.replace('1.jpg','2.jpg'),
+        alt: '주먹'
+    })
+    .removeAttr('border')
+
+});
+</script>
+</head>
+<body>
+    <h2>test88attr.html</h2>    
+    <section id='sec_1'>
+        <p> 
+            <img src="images/math_img_1.jpg" alt="가위">
+        </p>
+    </section>
+
+</body>
+</html>

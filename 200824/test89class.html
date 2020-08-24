@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!-- CDN jquery------------------------------------------------- -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style>
+    *{font-size: 20pt;}
+    .aqua { background-color: aqua;}
+    .red{background-color: red;}
+    .green{background-color: greenyellow;}
+    .purple{background-color: purple; color:white}
+    .yellow{background-color: yellow;}
+</style>
+
+<script>
+$(function(){ 
+    $('#p1').addClass('aqua');
+    $('#p2').addClass('red');
+    $('#p3').addClass('green');
+    $('#p4').addClass('purple');
+    $('#p6').text($('#p5').hasClass('yellow'));
+});
+</script>
+</head>
+<body>
+    <h2>test89class.html</h2>    
+    <p id='p1'>내용1</p>
+    <p id='p2' class='red'>내용2</p>
+    <p id='p3'>내용3</p>
+    <p id='p4' class='green'>내용4</p>
+    <p id='p5' class='yellow'>내용5</p>
+    <p id='p6'>내용6</p>
+
+</body>
+</html>

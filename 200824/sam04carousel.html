@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title></title>
+
+<style>
+    img{
+        width: 135px;
+        height: 185px;
+    }
+</style>
+
+<!--jQuery Google CDN-------------------------->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+var win=null;
+
+$(function(){
+    //[1] prepend버튼을 누르면 img요소 중 마지막 요소를 찾아서
+    //#panel의 맨 앞에 붙이기
+    $('#prepend').click(function(){
+        $('img').last().prependTo('#panel');
+    })
+
+    //[2] append
+    $('#append').click(function(){
+        $('img').first().appendTo('#panel');
+    })
+    
+    //[3] 이미지가 자동으로 순환하기
+    //    setInterval()활용
+    $('#auto').click(function(){
+        if(win==null){
+            win=setInterval(function(){
+                $('#panel').append($('img:first')); 
+            },1000);
+        }
+    })
+
+    //[4] 이미지 순환을 중지하기
+    $('#stop').click(function(){
+        if(win!=null){
+            clearInterval(win);
+            win=null;
+        }
+    })
+});
+</script>
+</head>
+<body>
+    <h1>append(),prepend()활용한 이미지 순환</h1>
+    <div id="panel"  align="center">
+        <img src="images/a.png" alt="a.png">
+        <img src="images/b.png" alt="b.png">
+        <img src="images/c.png" alt="c.png">
+        <img src="images/d.png" alt="d.png">
+        <img src="images/e.png" alt="e.png">
+    </div>
+    <div align="center">
+        <button id="prepend">prepend</button>
+        <button id="append">append</button>
+        <button id="auto">auto moving</button>
+        <button id="stop">stop moving</button>
+    </div>
+</body>
+</html>

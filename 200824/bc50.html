@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title> </title>
+ <style>
+     *{font-size: 26pt; font-weight: bold;}
+     a{font-size: 26pt; font-weight: bold; color:blue;}
+     a:hover{font-size: 30pt; font-weight: bold; color:green;}
+
+     .btnColor{
+         background-color:hotpink;
+     }
+ </style>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+ $(function(){
+
+    var w1 = $("#p1").width();
+    console.log(w1);
+
+    var w2 = $("#p1").innerWidth();
+    console.log(w2);
+
+    var w3 = $("#p1").outerWidth();
+    console.log(w3);
+
+    $("#p2").outerHeight(100).outerWidth(150);
+
+ });
+</script>
+<style>
+    *{
+        padding: 0;
+    }
+    #p1,#p2{
+        width: 100px;
+        height: 50px;
+        padding: 20px;
+        border: 5px solid #000;
+        background-color: #ff0;
+    }
+</style>
+</head>
+
+  <body>
+    <h1>수치 조작 메서드</h1>
+    <p id="p1">내용1</p>
+    <p id="p2">내용2</p>
+  </body>
+</html>

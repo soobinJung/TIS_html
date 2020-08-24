@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!-- CDN jquery------------------------------------------------- -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style>
+    *{font-size: 20pt;}
+    .aqua { background-color: aqua;}
+    .red{background-color: red;}
+    .green{background-color: greenyellow;}
+    .purple{background-color: purple; color:white}
+    .yellow{background-color: yellow;}
+</style>
+
+<script>
+$(function(){ 
+    var result_1 = $('#chk1').prop('checked')
+    console.log(result_1)  ; //false
+    
+    var result_2 = $('#chk2').prop('checked')
+    console.log(result_2)  ; //true
+
+    var result_3 = $('#chk3').prop('checked', true)
+    //chk3sbs체크설정
+    
+
+    var result_4 = $('#se_1').prop('selectedIndex')
+    console.log(result_4)  ; //2
+  
+});
+</script>
+</head>
+<body>
+    <h2>test91prop.html</h2>   
+
+    <form action="#"  id='form_1'>
+        <p>
+            <input type="checkbox" name="chk1" id="chk1">chk1mbc
+            <input type="checkbox" name="chk2" id="chk2" checked>chk2kbs
+            <input type="checkbox" name="chk3" id="chk3">chk3sbs
+            <input type="checkbox" name="chk3" id="chk4">chk4tbs
+            <input type="checkbox" name="chk3" id="chk5">chk5cbs
+        </p>
+        <p>
+            <select name="se_1" id="se_1">
+                <option value="opt1">이름</option>
+                <option value="opt2">제목</option>
+                <option value="opt3" selected>내용</option>
+                <option value="opt4">전체선택</option>
+            </select>
+        </p>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title> </title>
+ <style>
+     *{font-size: 26pt; font-weight: bold;}
+     a{font-size: 26pt; font-weight: bold; color:blue;}
+     a:hover{font-size: 30pt; font-weight: bold; color:green;}
+
+     .btnColor{
+         background-color:hotpink;
+     }
+ </style>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+ $(function(){
+   $("button").mouseover(function(){
+      $(this).addClass("btnColor");
+   });
+	
+   $("button").mouseout(function(){
+     $(this).removeClass("btnColor");
+   });
+
+ });
+</script>
+</head>
+
+    <body>
+    <button>음악감상</button>
+    <button>영화보기</button>
+    <button>사진보기</button>
+    <button>종료하기</button><br><br>
+  </body>
+</html>

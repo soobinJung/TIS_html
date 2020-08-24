@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $(function(){
+        $(document).on("keydown",keyEvenFnc);
+        function keyEvenFnc(e){            
+            var direct="";
+
+            switch(e.keyCode){
+                case 37 :
+                    direct = "LEFT";
+                    break;
+                case 38 :
+                    direct = "TOP";
+                    break;
+                case 39 :
+                    direct = "RIGHT";
+                    break;
+                case 40 :
+                    direct = "BOTTOM";
+                    break;
+            }
+            
+            if(direct)$("#user_id").val(direct);
+        }
+    })
+</script>
+
+<body>
+   <p><input type="text" name="user_id" id="user_id"></p>
+</body>
+</html>

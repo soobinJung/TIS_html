@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $(function(){
+        $("#wrap p:eq(2)").after("<p>After</p>");
+        $("<p>inserBefore</p>").insertBefore("#wrap p:eq(1)");
+    });
+</script>
+
+<body>
+    <div id="wrap">
+        <P>내용1</P>
+        <P>내용2</P>
+        <P>내용3</P>
+        <P>내용4</P>
+    </div>
+</body>
+</html>

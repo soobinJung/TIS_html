@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+
+</style>
+
+<!-- CDN jquery------------------------------------------------- -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+$(function(){
+   $('#wrap a[target]').css({'color':'red'});
+
+   $('#wrap a[href^=https]').css({'color':'green'});
+
+   $('#wrap a[href$=net]').css({'color':'blue'});
+
+   $('#wrap a[href*=google]').css({'color':'lightgreen'});
+
+   $(':text').css({'background-color':'pink'});
+   $(':password').css({'background-color':'yellow'});
+});
+</script>
+</head>
+<body>
+    <h2>test81.html</h2>
+    
+    <div id='wrap'>
+        <p> <a href="http://easyspub.co.kr" target="_blank">EasysPub</a></p>
+        <p> <a href="https://naver.com">Naver</a></p>
+        <p> <a href="https://daum.net">Daum</a></p>
+        <p> <a href="https://google.co.kr" >Google</a></p>
+    </div>
+    
+    <form action="#" method="get" id="member_f">
+        <label for="user_id">아이디:</label>
+        <input type="text" name="user_id" id="user_id"> <br>
+        <label for="user_pw">비밀번호:</label>
+        <input type="password" name="user_pw" id="user_pw"> <br>
+    </form>
+</body>
+</html>

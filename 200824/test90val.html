@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!-- CDN jquery------------------------------------------------- -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style>
+    *{font-size: 20pt;}
+    .aqua { background-color: aqua;}
+    .red{background-color: red;}
+    .green{background-color: greenyellow;}
+    .purple{background-color: purple; color:white}
+    .yellow{background-color: yellow;}
+</style>
+
+<script>
+$(function(){ 
+    var result_1 = $('#user_name').val();
+    console.log('user_name ' + result_1);
+
+    $('#user_id').val('blue');
+   // $('#user_name').val('sky');
+    
+    var result_2 = $('#user_name').prop('defaultValue');
+    console.log(result_2);
+    console.log($('#user_name').val());
+    console.log(result_1);
+});
+</script>
+</head>
+<body>
+    <h2>test90val.html</h2>   
+
+    <form action="#"  id='form_1'>
+        <p>
+            이름: <input type="text" name="user_name" id="user_name" value="용대리"> <br>
+            UID: <input type="text" name="user_id" id="user_id" value="hello">
+        </p>
+    </form>
+
+</body>
+</html>

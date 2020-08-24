@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title> calendarmain</title>
+<style type="text/css">
+		body { margin: 0;}
+		#slidebox { width:100%; height: 300px; overflow:hidden; position: relative; z-index:0;}
+		#slider { position: relative; list-style: none; margin: 0; padding: 0; }
+		#slider li { position: absolute; left: 0; top: 0; width:100%; height:300px; }
+		#slider li img { width:100%; height:300px; border: 0;}
+</style>
+
+
+<link href="js/jquery.modal.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+
+
+<style type="text/css">
+	#selectTotal{
+		font-size: 14pt; font-weight: bold;
+		width:220px;
+		height: 35px;
+	}
+
+	#reservButton{
+		font-size: 14px;
+		width:120px;
+		height: 35px;
+	}
+
+	#datepicker1 , #datepicker2{
+		font-size: 12px;
+		width:300px;
+		height: 25px;
+	}
+
+	#main_reservation{
+		font-size: 14pt; font-weight: bold;
+		width:1200px; height: 35px;
+	}
+</style>
+</head>
+<body>
+	
+	<div>
+		<div id="slidebox">
+			<ul id="slider">
+				<li>
+					<img src="images/BH_main1.jpg">
+				</li>
+				<li>
+					<img src="images/BH_main2.jpg">
+				</li>
+				<li>
+					<img src="images/BH_main3.jpg">
+				</li>
+				<li>
+		    	    <img src="images/BH_main4.jpg">
+	    
+				</li>
+				<li>
+					<img src="images/BH_main5.jpg">
+				</li>
+			</ul>
+		</div>
+	</div>
+
+<script type="text/javascript">
+		var slider = document.getElementById("slider");
+		var slideArray = slider.getElementsByTagName("li");
+		console.log('slideArray='+ slideArray.length);
+		var slideMax = slideArray.length - 1;
+		
+		var curSlideNo = 0;
+		var nextSlideNo =null;
+		var fadeStart = false;
+		var curSlideLevel = 1;
+		var nextSlideLevel = 0;
+ 
+		function startSlide(dir){
+			if (fadeStart === true) return;
+			if( dir == "prev" )	{
+				nextSlideNo = curSlideNo - 1;
+				if ( nextSlideNo < 0 ) nextSlideNo = slideMax;
+			} else if( dir == "next" ) 	{  //시작적용
+				nextSlideNo = curSlideNo + 1;
+				if ( nextSlideNo > slideMax ) nextSlideNo = 0;
+			}else{
+				fadeStart = false;
+				return;
+			}
+			fadeStart = true;
+			changeOpacity(slideArray[curSlideNo], curSlideLevel);
+			changeOpacity(slideArray[nextSlideNo], nextSlideLevel);
+			fadeInOutAction(dir);
+		}//end
+ 
+		function fadeInOutAction(dir){
+			curSlideLevel = curSlideLevel - 0.1;
+			nextSlideLevel = nextSlideLevel + 0.1;
+			if( curSlideLevel <= 0 ) 
+			{
+				changeOpacity(slideArray[curSlideNo], 0);
+				changeOpacity(slideArray[nextSlideNo], 1);
+				if(dir == "prev")
+				{
+					curSlideNo = curSlideNo - 1;
+					if (curSlideNo < 0) curSlideNo = slideMax;
+				}
+				else
+				{
+					curSlideNo = curSlideNo + 1;
+					if (curSlideNo > slideMax) curSlideNo = 0;
+				}
+				curSlideLevel = 1;
+				nextSlideLevel = 0;
+				fadeStart = false;
+				return;
+			}
+			changeOpacity(slideArray[curSlideNo], curSlideLevel);
+			changeOpacity(slideArray[nextSlideNo], nextSlideLevel);
+			setTimeout(function () { fadeInOutAction(dir);	}, 500);
+		}//end
+ 
+		function changeOpacity(obj,level) {
+			obj.style.opacity = level; 
+			obj.style.MozOpacity = level; 
+			obj.style.KhtmlOpacity = level;
+			obj.style.MsFilter = "'progid:DXImageTransform.Microsoft.Alpha(Opacity=" + (level * 100) + ")'";
+			obj.style.filter = "alpha(opacity=" + (level * 100) + ");"; 
+		}//end
+ 
+		setInterval( function(){startSlide('next');},1000);
+</script>
+
+<script type="text/javascript">
+	$(function() {
+		$.datepicker.setDefaults({
+                dateFormat: 'yy-mm-dd' //Input Display Format 변경
+               ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+               ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+                ,changeYear: true //콤보박스에서 년 선택 가능
+                ,changeMonth: true //콤보박스에서 월 선택 가능                
+                ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+               ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+                ,minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+                ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)    
+         });
+		////////////////////////////////////////////////////////////////////////////////////////
+		$("#datepicker1").datepicker();
+		$("#datepicker2").datepicker();
+		
+
+		$("#datepicker1").datepicker('setDate','today');
+		//$("#datepicker2").datepicker('setDate','+1D');
+		
+
+		/*$("#datepicker1").datepicker({
+			numberOfMonths: 2,
+			onSelect: function(selected) {
+				$("#datepicker2").datepicker("option","minDate", selected)
+			},
+			dateFormat: "yy/mm/dd",
+			showMonthAfterYear:true, //년도 먼저 나오고, 뒤에 월 표시
+			dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']		});
+		$("#datepicker2").datepicker({
+			numberOfMonths: 2,
+			onSelect: function(selected) {
+				$("#datepicker1").datepicker("option","maxDate", selected)
+			},
+			dateFormat: "yy/mm/dd",
+			showMonthAfterYear:true, //년도 먼저 나오고, 뒤에 월 표시
+			dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+		});*/ 
+		
+	});
+</script>
+
+<script type="text/javascript">
+	function reservCheck( ){ //reservCheck(sessionID){
+		var selectTotal=document.getElementById("selectTotal").value;
+		var checkIn=document.getElementById("datepicker1").value;
+		var checkOut=document.getElementById("datepicker2").value;
+	    //alert( "예약시작날짜= " + checkIn +"  예약퇴실날짜=" + checkOut) ;
+		//if(sessionID==null||sessionID==""){
+			//submitFun("알림창","로그인 후 이용 가능 합니다.");
+			//return false;
+		//}
+		
+		if(checkIn==null||checkIn==""){
+			alert("입실 날짜를 선택해 주세요.");
+			return false;
+		}else if(checkOut==null||checkOut==""){
+			alert("퇴실 날짜를 선택해 주세요.");
+			return false;
+		}else if(selectTotal==null||selectTotal==""||selectTotal=="인원수"){
+			alert("인원수를 선택해 주세요.");
+			return false;
+		}else if(checkIn===checkOut){
+			alert("입실/퇴실 날짜가 같습니다. 다시 확인해 주세요.");
+			return false;
+		}else{
+			location.href="";
+		}
+		alert( "예약시작날짜= " + checkIn +"  예약퇴실날짜=" + checkOut) ;
+	}
+</script>
+
+<script type="text/javascript">
+	$(function() {
+		function alert_confirm(title,msg){
+			modal({
+				type: 'error',
+				title: title,
+				text: msg
+			});
+		} 
+		//alertFun = alert_confirm; 
+		
+		function alert_submit(title,msg){
+			modal({
+				type: 'error',
+				title: title,
+				text: msg,
+				callback: function() {
+					location.href=" ";
+				}
+			});
+		} 
+		//submitFun = alert_submit;
+	}); 
+</script>
+
+  <div style='height:10px'></div>
+
+  <div id="main_reservation">
+  	<div class="main_table_reservation">
+		<span class="main_reserv3">
+			<label for="from">입실 날짜</label>
+			<input type="text" id="datepicker1" name="from" style="border: 1px solid #C6C6C6">
+			<label for="to">퇴실날짜</label>
+			<input type="text" id="datepicker2" name="to" style="border: 1px solid #C6C6C6">
+		</span>
+
+		<span class="main_reserv4">
+			<select id="selectTotal">
+				<option selected="selected" disabled="disabled"> 인원수</option>
+				<option value="1">1</option>
+	  			<option value="2">2</option>
+	  			<option value="3">3</option>
+	  			<option value="4">4</option>
+	  			<option value="5">5</option>
+	  			<option value="6">6</option>
+			</select>
+		</span>
+		
+		<span class="main_reserv5">
+			<input type="button" onclick="reservCheck()" value=" 예약하기 "  id="reservButton"  class="button">
+		</span>
+  	</div>
+  </div>
+
+
+  <div id="main_event">
+	    <p></p>
+  		<b><font size="5" style="margin-left:50px;">EVENT</font></b>
+  		<hr id="List_titleLine">
+  </div>
+</body>
+
+</html>
